@@ -4,11 +4,16 @@ for T in moderna_mock janssen_pooled_mock # janssen_pooled_real  janssen_pooled_
 do
 	export TRIAL=$T	
 	echo $TRIAL
-	if [[ "$1" == "cor_coxph" ]] 
+	if [[ "$1" == "risk_report" ]] 
 	then
-		make -k -C $1 cor_coxph # save some time
+		make risk_report
 	else
-		make -k -C $1 all
+		if [[ "$1" == "cor_coxph" ]] 
+		then
+			make -k -C $1 cor_coxph # save some time
+		else
+			make -k -C $1 all
+		fi
+		bash ./_build_chapter.sh $1
 	fi
-	bash ./_build_chapter.sh $1
 done
