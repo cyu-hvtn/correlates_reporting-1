@@ -11,7 +11,7 @@ library(knitr)
 library(kableExtra)
 library(dplyr)
 here::i_am("cor_tabular/report.Rmd")
-base::load(here::here( "cor_tabular", "output", "Tables.Rdata"))
+base::load(here::here( "cor_tabular", "output", attr(config,"config"), "Tables.Rdata"))
 
 ```
 \captionsetup[table]{}
